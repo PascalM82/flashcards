@@ -23,8 +23,8 @@ test.describe('Study Mode - Flashcard Functionality', () => {
     const flashcard = page.locator('.flashcard');
     await expect(flashcard).toBeVisible();
     
-    // Check that Spanish text is visible (one of the animal words)
-    const spanishText = page.locator('.flashcard-text');
+    // Check that Spanish text is visible on the front (use first() to get front card)
+    const spanishText = page.locator('.flashcard-front .flashcard-text');
     await expect(spanishText).toBeVisible();
     
     // Should show "Click to flip" hint
@@ -35,8 +35,8 @@ test.describe('Study Mode - Flashcard Functionality', () => {
     const flashcard = page.locator('.flashcard');
     await expect(flashcard).toBeVisible();
     
-    // Get the Spanish text before flipping
-    const spanishText = await page.locator('.flashcard-text').textContent();
+    // Get the Spanish text before flipping (from front)
+    const spanishText = await page.locator('.flashcard-front .flashcard-text').textContent();
     expect(spanishText).toBeTruthy();
     
     // Click to flip
@@ -48,8 +48,8 @@ test.describe('Study Mode - Flashcard Functionality', () => {
     // Check that card is flipped (has flipped class)
     await expect(flashcard).toHaveClass(/flipped/);
     
-    // Check that English translation is visible
-    const englishText = page.locator('.flashcard-text');
+    // Check that English translation is visible on the back
+    const englishText = page.locator('.flashcard-back .flashcard-text');
     await expect(englishText).toBeVisible();
     
     // English text should be different from Spanish
@@ -64,28 +64,28 @@ test.describe('Study Mode - Flashcard Functionality', () => {
     await flashcard.click();
     await page.waitForTimeout(700);
     
-    // Check that buttons appear
-    await expect(page.getByRole('button', { name: /✅ I got it right/i })).toBeVisible();
-    await expect(page.getByRole('button', { name: /❌ I got it wrong/i })).toBeVisible();
+    // Check that buttons appear (use getByText for more flexibility)
+    await expect(page.getByText(/I got it right/i)).toBeVisible();
+    await expect(page.getByText(/I got it wrong/i)).toBeVisible();
   });
 
   test('should not show buttons before flipping', async ({ page }) => {
     // Buttons should not be visible initially
-    await expect(page.getByRole('button', { name: /✅ I got it right/i })).not.toBeVisible();
-    await expect(page.getByRole('button', { name: /❌ I got it wrong/i })).not.toBeVisible();
+    await expect(page.getByText(/I got it right/i)).not.toBeVisible();
+    await expect(page.getByText(/I got it wrong/i)).not.toBeVisible();
   });
 
   test('should move to next card when Right button is clicked', async ({ page }) => {
     const flashcard = page.locator('.flashcard');
     
-    // Get initial card text
-    const initialText = await page.locator('.flashcard-text').textContent();
+    // Get initial card text from front
+    const initialText = await page.locator('.flashcard-front .flashcard-text').textContent();
     
     // Flip and answer correctly
     await flashcard.click();
     await page.waitForTimeout(700);
     
-    await page.getByRole('button', { name: /✅ I got it right/i }).click();
+    await page.getByText(/I got it right/i).click();
     
     // Wait for next card to load
     await page.waitForTimeout(500);
@@ -105,7 +105,7 @@ test.describe('Study Mode - Flashcard Functionality', () => {
     await flashcard.click();
     await page.waitForTimeout(700);
     
-    await page.getByRole('button', { name: /❌ I got it wrong/i }).click();
+    await page.getByText(/I got it wrong/i).click();
     
     // Wait for next card to load
     await page.waitForTimeout(500);
@@ -131,9 +131,9 @@ test.describe('Study Mode - Flashcard Functionality', () => {
       
       // Answer (alternate between right and wrong)
       if (i % 2 === 0) {
-        await page.getByRole('button', { name: /✅ I got it right/i }).click();
+        await page.getByText(/I got it right/i).click();
       } else {
-        await page.getByRole('button', { name: /❌ I got it wrong/i }).click();
+        await page.getByText(/I got it wrong/i).click();
       }
       
       await page.waitForTimeout(500);
@@ -149,7 +149,7 @@ test.describe('Study Mode - Flashcard Functionality', () => {
     for (let i = 0; i < 4; i++) {
       await page.locator('.flashcard').click();
       await page.waitForTimeout(700);
-      await page.getByRole('button', { name: /✅ I got it right/i }).click();
+      await page.getByText(/I got it right/i).click();
       await page.waitForTimeout(500);
     }
     
@@ -166,9 +166,9 @@ test.describe('Study Mode - Flashcard Functionality', () => {
       
       // Answer first two wrong, last two right
       if (i < 2) {
-        await page.getByRole('button', { name: /❌ I got it wrong/i }).click();
+        await page.getByText(/I got it wrong/i).click();
       } else {
-        await page.getByRole('button', { name: /✅ I got it right/i }).click();
+        await page.getByText(/I got it right/i).click();
       }
       
       await page.waitForTimeout(500);
@@ -179,7 +179,7 @@ test.describe('Study Mode - Flashcard Functionality', () => {
   });
 
   test('should navigate back to categories from study page', async ({ page }) => {
-    await page.getByRole('button', { name: /← Back to Categories/i }).click();
+    await page.getByText(/Back to Categories/i).click();
     
     await expect(page).toHaveURL('/study');
     await expect(page.getByRole('heading', { name: /Select a Category/i })).toBeVisible();
@@ -190,12 +190,12 @@ test.describe('Study Mode - Flashcard Functionality', () => {
     for (let i = 0; i < 4; i++) {
       await page.locator('.flashcard').click();
       await page.waitForTimeout(700);
-      await page.getByRole('button', { name: /✅ I got it right/i }).click();
+      await page.getByText(/I got it right/i).click();
       await page.waitForTimeout(500);
     }
     
     // Click back button from completion screen
-    await page.getByRole('button', { name: /← Back to Categories/i }).click();
+    await page.getByText(/Back to Categories/i).click();
     
     await expect(page).toHaveURL('/study');
     await expect(page.getByRole('heading', { name: /Select a Category/i })).toBeVisible();

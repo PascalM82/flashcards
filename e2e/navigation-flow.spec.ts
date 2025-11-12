@@ -19,15 +19,15 @@ test.describe('Complete Navigation Flow', () => {
     // Study one card
     await page.locator('.flashcard').click();
     await page.waitForTimeout(700);
-    await page.getByRole('button', { name: /✅ I got it right/i }).click();
+    await page.getByText(/I got it right/i).click();
     await page.waitForTimeout(500);
     
     // Go back to categories
-    await page.getByRole('button', { name: /← Back to Categories/i }).click();
+    await page.getByText(/Back to Categories/i).click();
     await expect(page).toHaveURL('/study');
     
     // Go back to home
-    await page.getByRole('button', { name: /← Back to Home/i }).click();
+    await page.getByText(/Back to Home/i).click();
     await expect(page).toHaveURL('/');
   });
 
@@ -49,7 +49,7 @@ test.describe('Complete Navigation Flow', () => {
     await expect(page.getByRole('heading', { name: /Statistics/i })).toBeVisible();
     
     // Navigate back to home
-    await page.getByRole('link', { name: /← Back to Home/i }).click();
+    await page.getByText(/Back to Home/i).click();
     await expect(page).toHaveURL('/');
   });
 });

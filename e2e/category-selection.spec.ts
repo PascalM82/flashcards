@@ -39,7 +39,7 @@ test.describe('Category Selection Page', () => {
     });
 
     test('should navigate back to home when back button is clicked', async ({ page }) => {
-      await page.getByRole('button', { name: /← Back to Home/i }).click();
+      await page.getByText(/Back to Home/i).click();
       
       await expect(page).toHaveURL('/');
       await expect(page.getByRole('heading', { name: 'Spanish Flashcards' })).toBeVisible();

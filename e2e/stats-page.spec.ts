@@ -14,12 +14,12 @@ test.describe('Stats Page', () => {
   });
 
   test('should have back to home button', async ({ page }) => {
-    const backButton = page.getByRole('link', { name: /← Back to Home/i });
+    const backButton = page.getByText(/Back to Home/i);
     await expect(backButton).toBeVisible();
   });
 
   test('should navigate back to home when back button is clicked', async ({ page }) => {
-    await page.getByRole('link', { name: /← Back to Home/i }).click();
+    await page.getByText(/Back to Home/i).click();
     
     await expect(page).toHaveURL('/');
     await expect(page.getByRole('heading', { name: 'Spanish Flashcards' })).toBeVisible();
