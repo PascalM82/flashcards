@@ -2,44 +2,44 @@
 
 ## 🟢 Phase 1: Project Setup and Static Pages
 
-- [ ] Initialize project with Vite + React + TypeScript  
-  ✅ *Acceptance Criteria:* Running `npm run dev` starts a Vite dev server with a working React+TS project.
+- [x] Initialize project with Vite + React + TypeScript  
+  ✅ *Acceptance Criteria:* Running `npm run dev` starts a Vite dev server with a working React+TS project. ✅ **COMPLETED**
 
-- [ ] Set up file structure (`/components`, `/data`, `/pages`)  
-  ✅ *Acceptance Criteria:* Directory structure exists with logical separation of components, static data, and page views.
+- [x] Set up file structure (`/components`, `/data`, `/pages`)  
+  ✅ *Acceptance Criteria:* Directory structure exists with logical separation of components, static data, and page views. ✅ **COMPLETED**
 
-- [ ] Create static JSON or TS file with flashcards grouped by category (animals, food, verbs)  
-  ✅ *Acceptance Criteria:* File exports at least 3 cards per category with correct format: `spanish`, `english`, `category`, and `quiz`.
+- [x] Create static JSON or TS file with flashcards grouped by category (animals, food, verbs)  
+  ✅ *Acceptance Criteria:* File exports at least 3 cards per category with correct format: `spanish`, `english`, `category`, and `quiz`. ✅ **COMPLETED** (4 cards per category)
 
-- [ ] Create Home Page with navigation buttons:
-  - [ ] Study Mode  
-    ✅ *Acceptance Criteria:* Button/link navigates to category selection for study mode.
-  - [ ] Quiz Mode  
-    ✅ *Acceptance Criteria:* Button/link navigates to quiz category selection.
-  - [ ] Stats Page  
-    ✅ *Acceptance Criteria:* Button/link navigates to the statistics page.
+- [x] Create Home Page with navigation buttons:
+  - [x] Study Mode  
+    ✅ *Acceptance Criteria:* Button/link navigates to category selection for study mode. ✅ **COMPLETED**
+  - [x] Quiz Mode  
+    ✅ *Acceptance Criteria:* Button/link navigates to quiz category selection. ✅ **COMPLETED**
+  - [x] Stats Page  
+    ✅ *Acceptance Criteria:* Button/link navigates to the statistics page. ✅ **COMPLETED**
 
 ## 🟢 Phase 2: Flashcard Study Mode (Basic)
 
-- [ ] Create `CategorySelectionPage` to pick a category  
-  ✅ *Acceptance Criteria:* Lists all 3 categories; clicking one proceeds to Study or Quiz based on mode selected.
+- [x] Create `CategorySelectionPage` to pick a category  
+  ✅ *Acceptance Criteria:* Lists all 3 categories; clicking one proceeds to Study or Quiz based on mode selected. ✅ **COMPLETED** (Created in Phase 1)
 
-- [ ] Create `Flashcard` component to show:
-  - [ ] Spanish word (front side)  
-    ✅ *Acceptance Criteria:* Spanish word is displayed by default.
-  - [ ] English word (back side)  
-    ✅ *Acceptance Criteria:* Card flips to show English translation.
-  - [ ] Flip interaction (click-to-flip)  
-    ✅ *Acceptance Criteria:* Card responds to click or tap and visually flips to show other side.
+- [x] Create `Flashcard` component to show:
+  - [x] Spanish word (front side)  
+    ✅ *Acceptance Criteria:* Spanish word is displayed by default. ✅ **COMPLETED**
+  - [x] English word (back side)  
+    ✅ *Acceptance Criteria:* Card flips to show English translation. ✅ **COMPLETED**
+  - [x] Flip interaction (click-to-flip)  
+    ✅ *Acceptance Criteria:* Card responds to click or tap and visually flips to show other side. ✅ **COMPLETED**
 
-- [ ] Display "✅ Right" and "❌ Wrong" buttons after flipping  
-  ✅ *Acceptance Criteria:* Buttons appear only after flipping and let the user mark the answer as correct or incorrect. After clicking a button, the next card is displayed.
+- [x] Display "✅ Right" and "❌ Wrong" buttons after flipping  
+  ✅ *Acceptance Criteria:* Buttons appear only after flipping and let the user mark the answer as correct or incorrect. After clicking a button, the next card is displayed. ✅ **COMPLETED**
 
-- [ ] Track incorrect answers in React state  
-  ✅ *Acceptance Criteria:* Cards marked as "Wrong" are stored in component-level or app-level state for later use.
+- [x] Track incorrect answers in React state  
+  ✅ *Acceptance Criteria:* Cards marked as "Wrong" are stored in component-level or app-level state for later use. ✅ **COMPLETED**
 
-- [ ] Allow user to move through all cards in the selected category  
-  ✅ *Acceptance Criteria:* User can navigate through the flashcards one by one until all cards are reviewed.
+- [x] Allow user to move through all cards in the selected category  
+  ✅ *Acceptance Criteria:* User can navigate through the flashcards one by one until all cards are reviewed. ✅ **COMPLETED**
 
 ## 🟡 Phase 3: Redo Mode (Repeat Wrong Cards)
 

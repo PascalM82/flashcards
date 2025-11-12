@@ -59,6 +59,26 @@ The built files will be in the `dist` directory.
 npm run preview
 ```
 
+### Running E2E Tests
+
+The project includes comprehensive End-to-End tests using Playwright:
+
+```bash
+# Run all E2E tests
+npm run test:e2e
+
+# Run tests with interactive UI
+npm run test:e2e:ui
+
+# Run tests in headed mode (see browser)
+npm run test:e2e:headed
+
+# Run tests in debug mode
+npm run test:e2e:debug
+```
+
+See `e2e/README.md` for more details about the test suite.
+
 ## Project Structure
 
 ```
