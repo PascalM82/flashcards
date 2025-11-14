@@ -139,6 +139,56 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Redo-specific button styling */
+.back-button.redo-button {
+  background: linear-gradient(135deg, #8b008b 0%, #6b006b 100%);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.back-button.redo-button:hover {
+  background: linear-gradient(135deg, #6b006b 0%, #5a005a 100%);
+}
+
+.back-button.redo-again-button {
+  background: linear-gradient(135deg, #8b008b 0%, #6b006b 100%);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.back-button.redo-again-button:hover {
+  background: linear-gradient(135deg, #6b006b 0%, #5a005a 100%);
+}
+
+.back-button.clear-button {
+  background: linear-gradient(135deg, #d13438 0%, #a4262c 100%);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.back-button.clear-button:hover {
+  background: linear-gradient(135deg, #a4262c 0%, #8b0000 100%);
+}
+
+/* Completion stats styling */
+.completion-stats {
+  font-size: 1.1rem;
+  color: #107c10;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.success-message {
+  font-size: 1.2rem;
+  color: #107c10;
+  margin: 1rem 0;
+  font-weight: 700;
+  padding: 1rem;
+  background: rgba(16, 124, 16, 0.1);
+  border-radius: 8px;
+  border: 2px solid rgba(16, 124, 16, 0.3);
+}
+
 @media (max-width: 600px) {
   .study-header h1 {
     font-size: 2rem;

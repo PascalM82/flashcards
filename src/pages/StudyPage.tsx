@@ -4,6 +4,7 @@ import { getCardsByCategory } from "../data/flashcards";
 import type { Flashcard as FlashcardType } from "../data/flashcards";
 import { validateCategory } from "../utils/categoryUtils";
 import { capitalizeFirstLetter, pluralize } from "../utils/stringUtils";
+import { addWrongCards } from "../utils/wrongCardsStorage";
 import { UI_TEXT, ROUTES } from "../constants/uiConstants";
 import Flashcard from "../components/Flashcard";
 import "../styles/StudyPage.css";
@@ -54,6 +55,11 @@ const StudyPage = () => {
       setCurrentIndex((prev) => prev + 1);
     } else {
       setIsComplete(true);
+      // Save wrong answers to localStorage for redo mode
+      if (wrongAnswers.length > 0 || !isCorrect) {
+        const allWrongCards = !isCorrect ? [...wrongAnswers, currentCard] : wrongAnswers;
+        addWrongCards(allWrongCards);
+      }
     }
   };
 
@@ -62,6 +68,13 @@ const StudyPage = () => {
    */
   const handleBackToCategories = () => {
     navigate(ROUTES.STUDY);
+  };
+
+  /**
+   * Navigates to redo mode to review wrong cards
+   */
+  const handleRedoWrongCards = () => {
+    navigate(ROUTES.REDO);
   };
 
   // Render completion screen
@@ -74,9 +87,14 @@ const StudyPage = () => {
             You've finished studying all {cards.length} {pluralize(cards.length, "card")} in the {capitalizeFirstLetter(validatedCategory || "selected")} category.
           </p>
           {wrongAnswers.length > 0 && (
-            <p className="wrong-answers-count">
-              You got {wrongAnswers.length} {pluralize(wrongAnswers.length, "card")} wrong.
-            </p>
+            <>
+              <p className="wrong-answers-count">
+                You got {wrongAnswers.length} {pluralize(wrongAnswers.length, "card")} wrong.
+              </p>
+              <button onClick={handleRedoWrongCards} className="back-button redo-button">
+                {UI_TEXT.REDO_BUTTON}
+              </button>
+            </>
           )}
           <button onClick={handleBackToCategories} className="back-button">
             {UI_TEXT.BACK_TO_CATEGORIES}

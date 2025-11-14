@@ -14,6 +14,13 @@ export const UI_TEXT = {
   STUDY_COMPLETE_TITLE: "Study Complete! 🎉",
   STUDY_LOADING: "Loading...",
   
+  // Redo mode
+  REDO_MODE_TITLE_SUFFIX: "Redo Mode",
+  REDO_BUTTON: "🔄 Redo Wrong Cards",
+  REDO_COMPLETE_TITLE: "Redo Complete! 🎉",
+  CLEAR_WRONG_CARDS: "Clear Wrong Cards",
+  NO_WRONG_CARDS: "No wrong cards to review",
+  
   // Navigation
   BACK_TO_CATEGORIES: "← Back to Categories",
   BACK_TO_HOME: "← Back to Home",
@@ -27,5 +34,6 @@ export const ROUTES = {
   STUDY: "/study",
   QUIZ: "/quiz",
   STATS: "/stats",
+  REDO: "/redo",
 } as const;
 

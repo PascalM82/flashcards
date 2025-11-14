@@ -41,16 +41,16 @@
 - [x] Allow user to move through all cards in the selected category  
   ✅ *Acceptance Criteria:* User can navigate through the flashcards one by one until all cards are reviewed. ✅ **COMPLETED**
 
-## 🟡 Phase 3: Redo Mode (Repeat Wrong Cards)
+## 🟢 Phase 3: Redo Mode (Repeat Wrong Cards) ✅ COMPLETED
 
-- [ ] Add "Redo Wrong Cards" button on Home or Study end screen  
-  ✅ *Acceptance Criteria:* Button appears after study session ends (if there were wrong cards); clicking it starts a redo session.
+- [x] Add "Redo Wrong Cards" button on Home or Study end screen  
+  ✅ *Acceptance Criteria:* Button appears after study session ends (if there were wrong cards); clicking it starts a redo session. ✅ **COMPLETED**
 
-- [ ] Show only previously failed cards in redo session  
-  ✅ *Acceptance Criteria:* Flashcard component is reused but only displays cards marked wrong in the previous round.
+- [x] Show only previously failed cards in redo session  
+  ✅ *Acceptance Criteria:* Flashcard component is reused but only displays cards marked wrong in the previous round. ✅ **COMPLETED**
 
-- [ ] Allow resetting of the "wrong" list  
-  ✅ *Acceptance Criteria:* User can clear the list of wrong cards from a button or settings section.
+- [x] Allow resetting of the "wrong" list  
+  ✅ *Acceptance Criteria:* User can clear the list of wrong cards from a button or settings section. ✅ **COMPLETED**
 
 ## 🟡 Phase 4: Quiz Mode
 
